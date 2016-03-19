@@ -1,4 +1,4 @@
-# Diagrma de Sequência
+# Diagrama de Sequência
 
 ## Basic examples
 
