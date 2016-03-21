@@ -1,0 +1,60 @@
+%Engine usada pelo AMC
+%%AMC:latex_engine=lualatex
+
+\documentclass[a4paper,twoside]{article}
+\usepackage{multiplechoiceifba}
+\usepackage{pgffor}
+\usepackage{csvsimple}
+\usepackage{etoolbox}
+\usepackage{luacode}
+
+\newcommand{\curso}{Técnico Integrado de Nível Médio em Informática}
+\newcommand{\materia}{Programação WEB I}
+\newcommand{\turma}{EI-2114}
+\newcommand{\professor}{Leandro Costa Souza}
+\newcommand{\avaliacao}{Prova Unidade III}
+\newcommand{\dataavaliacao}{06/11/2014}
+
+\begin{luacode}
+function splitgroup(disciplinas)
+	for disc in string.gmatch(disciplinas, '([^;]+)') do
+		local fileHandler = io.open(disc .. ".tex","r")
+		if fileHandler then
+			fileHandler:close()
+			tex.print("\\shufflegroup{" .. disc .. "}")
+			tex.print("\\insertgroup{" .. disc .. "}")
+		end
+	end	
+end
+\end{luacode}
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf #1 )} #2\hspace*{1pt}}
+\newcommand{\duracao}{140 minutos}
+\newcommand{\subject}{
+	\onecopy{1}{  
+		\noindent
+		\input{cabecalho}
+		\input{orientacoes}
+		\vfill
+
+		\directlua{splitgroup("\disciplinas")}
+  
+	    \AMCassociation{\id}
+	    \cleardoublepage
+	    
+	    % Foreach da quantidade de disciplinas
+	}
+
+}
+%%% preparation of the groups
+\include{ILP001}
+\include{POO002}
+\include{POO001}
+\renewcommand{\lstlistingname}{}
+
+\begin{document}
+
+\AMCrandomseed{1237893}
+
+\csvreader[head to column names]{files/alunosENAD2.csv}{}{\subject}
+
+\end{document}
