@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y texlive texlive-latex-extra texlive-lan
 RUN apt-get install -y texlive-luatex
 # Dependências de desenvolvimento
 RUN apt-get install -y vim git python3 auto-multiple-choice
-
+RUN apt-get clean
 RUN mkdir /home/jenkins
 RUN chown jenkins:jenkins /home/jenkins
 USER jenkins
