@@ -5,8 +5,8 @@ COPY executors.groovy /usr/share/jenkins/ref/init.groovy.d/executors.groovy
 # Instalando latex
 USER root
 # Dependências latex
-RUN apt-get update && apt-get install -y texlive texlive-latex-extra texlive-lang-portuguese
-RUN apt-get install -y texlive-luatex
+RUN apt-get update && apt-get install -y texlive-latex-base texlive-luatex
+
 # Dependências de desenvolvimento
 RUN apt-get install -y vim git python3 auto-multiple-choice
 
