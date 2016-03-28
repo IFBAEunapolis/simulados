@@ -1,20 +1,16 @@
 FROM jenkins
+
 # Modificando o número de executores
 COPY executors.groovy /usr/share/jenkins/ref/init.groovy.d/executors.groovy
 
-# Instalando latex
+# Todos os comandos a partir desse serão executados no usuário root
 USER root
 
-# Adicionar pasta do jenkins à imagem
-# ADD jenkins_home /var/jenkins_home
-
-# Instalando Plugins
+# Instalando Plugins do Jenkins
 COPY plugins.txt /usr/share/jenkins/plugins.txt
 RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
 
-COPY jobs /var/jenkins_home/jobs
-
-# Dependências do latex e desenvolvimento
+# Instalando dependências do latex e auto-multiple-choice
 RUN apt-get update && apt-get install -y --no-install-recommends vim git python3 texlive-luatex auto-multiple-choice
 RUN apt-get clean
 
@@ -25,5 +21,8 @@ RUN chown jenkins:jenkins /home/jenkins
 # Adicionar pasta do enade-builder à imagem
 ADD enade-builder /home/jenkins/enade-builder/
 
+# Retornar ao usuário do jenkins
 USER jenkins
 
+# Copiando os jobs para a pasta do jenkins
+COPY jobs /var/jenkins_home/jobs
