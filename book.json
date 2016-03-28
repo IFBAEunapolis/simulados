@@ -1,4 +1,9 @@
 {
+    "gitbook": "2.x.x",
+    "root": "./docs",
+    "structure": {
+      "readme": "INDEX.md"
+    },
     "language": "pt",
     "plugins": [
         "puml"
