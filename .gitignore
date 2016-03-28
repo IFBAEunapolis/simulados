@@ -16,4 +16,5 @@ _book
 *.pdf
 tags
 db-data/*
-gogs/gogs-data/
+gogs/gogs-data/*
+gogs/db-data/*
