@@ -2,7 +2,7 @@
 # Referência: https://docs.docker.com/compose/compose-file://docs.docker.com/compose/compose-file/
 
 jenkins:
-  build: ./jenkins/
+  image: ifbaeunapolis/simulados
   volumes:
     - ./jenkins/enade-builder/:/home/jenkins/enade-builder/
     - ./jenkins/jenkins_home/:/var/jenkins_home/
@@ -14,7 +14,7 @@ jenkins:
     - gogs
 
 gogs:
-  build: ./gogs/
+  image: gogs/gogs
   ports:
     - "10022:22"
     - "3000:3000"
