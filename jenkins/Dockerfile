@@ -11,8 +11,8 @@ COPY plugins.txt /usr/share/jenkins/plugins.txt
 RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
 
 # Instalando dependências do latex e auto-multiple-choice
-# RUN apt-get update && apt-get install -y --no-install-recommends vim git python3 texlive-luatex auto-multiple-choice
-# RUN apt-get clean
+RUN apt-get update && apt-get install -y --no-install-recommends vim git python3 texlive-luatex auto-multiple-choice
+RUN apt-get clean
 
 # Criar pasta de usuário do jenkins
 RUN mkdir /home/jenkins
