@@ -23,7 +23,7 @@ ADD enade-builder /home/jenkins/enade-builder/
 
 # Copiando os jobs para a pasta do jenkins
 COPY jobs /var/jenkins_home/jobs
-RUN chown jenkins:jenkins /var/jenkins-home/jobs
+RUN chown jenkins:jenkins /var/jenkins_home/jobs
 
 # Retornar ao usuário do jenkins
 USER jenkins
