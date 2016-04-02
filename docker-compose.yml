@@ -2,10 +2,11 @@
 # Referência: https://docs.docker.com/compose/compose-file://docs.docker.com/compose/compose-file/
 
 jenkins:
-  image: ifbaeunapolis/simulados
+  image: ifbaeunapolis/simulados:latest
   volumes:
     - ./jenkins/enade-builder/:/home/jenkins/enade-builder/
-    - ./jenkins/jenkins_home/:/var/jenkins_home/
+    # - ./jenkins/jenkins_home/:/var/jenkins_home/
+    # Pasta do Jenkins comentada do volume por problemas de permissão: TODO
   ports:
     - "8080:8080"
     - "50000:50000"
@@ -25,7 +26,7 @@ gogs:
     - ./gogs/gogs-data/:/data/
 
 mysql:
-  image: mariadb
+  image: mariadb:10.1.12
   privileged: true
   volumes:
     - ./db-data/mysql-data/:/var/lib/mysql/
