@@ -2,7 +2,7 @@
 
 {% plantuml %}
 @startuml
-node "Integração Continua - Jenkins" as jenkins
+node "Integração&nbspContinua - Jenkins" as jenkins
 node "Servidor Git - Gogs" as gogs
 database "Banco de Dados  - MySQL" as mysql
 node "Auto Multiple Choice" as amc
