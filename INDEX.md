@@ -2,7 +2,7 @@
 
 {% plantuml %}
 @startuml
-node "Integra&#00e7&#00e3o Continua - Jenkins" as jenkins
+node "Integra<U+00e7><U+00e3o> Continua - Jenkins" as jenkins
 node "Servidor Git - Gogs" as gogs
 database "Banco de Dados  - MySQL" as mysql
 node "Auto Multiple Choice" as amc
