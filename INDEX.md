@@ -2,7 +2,7 @@
 
 {% plantuml %}
 @startuml
-node "Integração&nbspContinua - Jenkins" as jenkins
+node "Integra~ção Continua - Jenkins" as jenkins
 node "Servidor Git - Gogs" as gogs
 database "Banco de Dados  - MySQL" as mysql
 node "Auto Multiple Choice" as amc
@@ -12,8 +12,6 @@ jenkins .. amc
 
 @enduml
 {% endplantuml %}
-
-Neste livro coloquei algumas informações que encontrei na internet e compilei em um lugar só para facilitar os estudos.
 
 
 | A                    | B       | C      |
