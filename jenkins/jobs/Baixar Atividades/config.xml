@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command># Entrar na pasta do Compilador do Enade
+cd $ENADE_BUILDER_FOLDER
+
+# Se a pasta Atividades não existir, clonar ela do git
+if [ ! -d Atividades ]; then
+  git clone $ATIVIDADES_REPO Atividades
+fi
+
+# Atualizar atividades
+cd Atividades; 
+git pull
+echo &apos;Processo finalizado&apos;</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <EnvInjectBuildWrapper plugin="envinject@1.92.1">
+      <info>
+        <propertiesContent>ATIVIDADES_REPO=http://localhost:3000/ifba_ads/Atividades.git
+
+ENADE_BUILDER_FOLDER=/home/jenkins/enade-builder</propertiesContent>
+        <loadFilesFromMaster>false</loadFilesFromMaster>
+      </info>
+    </EnvInjectBuildWrapper>
+  </buildWrappers>
+</project>
