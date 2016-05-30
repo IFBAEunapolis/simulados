@@ -8,12 +8,7 @@
 \usepackage{etoolbox}
 \usepackage{luacode}
 
-\newcommand{\curso}{Técnico Integrado de Nível Médio em Informática}
-\newcommand{\materia}{Programação WEB I}
-\newcommand{\turma}{EI-2114}
-\newcommand{\professor}{Leandro Costa Souza}
-\newcommand{\avaliacao}{Prova Unidade III}
-\newcommand{\dataavaliacao}{06/11/2014}
+\input{Atividades/config.tex}
 
 \begin{luacode}
 function splitgroup(disciplinas)
@@ -32,8 +27,8 @@ end
 \newcommand{\subject}{
 	\onecopy{1}{  
 		\noindent
-		\input{cabecalho}
-		\input{orientacoes}
+		\input{Atividades/cabecalho}
+		\input{Atividades/orientacoes}
 		\vfill
 
 		\directlua{splitgroup("\disciplinas")}
@@ -46,9 +41,7 @@ end
 
 }
 %%% preparation of the groups
-\include{ILP001}
-\include{POO002}
-\include{POO001}
+\include{Atividades/Lista.tex}
 \renewcommand{\lstlistingname}{}
 
 \begin{document}
