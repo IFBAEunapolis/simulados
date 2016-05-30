@@ -1,36 +1,37 @@
-# Versão do docker-compose: 1
+# Versão do docker-compose: 2
 # Referência: https://docs.docker.com/compose/compose-file://docs.docker.com/compose/compose-file/
+version: '2'
 
-jenkins:
-  image: ifbaeunapolis/simulados:latest
-  volumes:
-    - ./jenkins/enade-builder/:/home/jenkins/enade-builder/
-    # - ./jenkins/jenkins_home/:/var/jenkins_home/
-    # Pasta do Jenkins comentada do volume por problemas de permissão: TODO
-  ports:
-    - "8080:8080"
-    - "50000:50000"
+services:
+  enade:
+    dns: ["8.8.8.8"]
+    # image: ifbaeunapolis/simulados:latest
+    build: jenkins/
+    volumes:
+      - ./jenkins/enade-builder/:/home/jenkins/enade-builder/
+    ports:
+      - "8080:8080" # Porta do Jenkins
+      - "50000:50000"
+      - "10022:22" # SSH do Gogs
+      - "3000:3000" # Porta do Gogs HTTP
 
-  links:
-    - gogs
+  gogs:
+    image: gogs/gogs
+    network_mode: service:enade
+    depends_on:
+      - enade
+    volumes:
+      - ./gogs/config/:/data/gogs/conf/
+      - ./gogs/gogs-data/:/data/
 
-gogs:
-  image: gogs/gogs
-  ports:
-    - "10022:22"
-    - "3000:3000"
-  links:
-    - mysql
-  volumes:
-    - ./gogs/config/:/data/gogs/conf/
-    - ./gogs/gogs-data/:/data/
-
-mysql:
-  image: mariadb:10.1.12
-  privileged: true
-  volumes:
-    - ./db-data/mysql-data/:/var/lib/mysql/
-  environment:
-    - MYSQL_USERNAME=root
-    - MYSQL_DATABASE=gogs
-    - MYSQL_ROOT_PASSWORD=FCQW3HGWpsLPmb4h
+  mysql:
+    image: mariadb:10.1.12
+    network_mode: service:enade
+    depends_on:
+      - enade
+    volumes:
+      - ./db-data/mysql-data/:/var/lib/mysql/
+    environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_DATABASE=gogs
+      - MYSQL_ROOT_PASSWORD=FCQW3HGWpsLPmb4h
