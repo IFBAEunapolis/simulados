@@ -7,6 +7,8 @@ services:
     dns: ["8.8.8.8"]
     # image: ifbaeunapolis/simulados:latest
     build: jenkins/
+    mem_limit: 512m
+    cpu_shares: 20
     volumes:
       - ./jenkins/enade-builder/:/home/jenkins/enade-builder/
     ports:
