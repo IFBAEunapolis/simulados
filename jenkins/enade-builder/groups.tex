@@ -7,13 +7,15 @@
 \usepackage{csvsimple}
 \usepackage{etoolbox}
 \usepackage{luacode}
+\usepackage{import}
 
-\input{Atividades/config.tex}
+% 
+\import{Atividades/}{config}
 
 \begin{luacode}
 function splitgroup(disciplinas)
-	for disc in string.gmatch(disciplinas, '([^;]+)') do
-		local fileHandler = io.open(disc .. ".tex","r")
+	for disc in string.gmatch(disciplinas, '[^;]+') do
+		local fileHandler = io.open("Atividades/" .. disc .. ".tex","r")
 		if fileHandler then
 			fileHandler:close()
 			tex.print("\\shufflegroup{" .. disc .. "}")
@@ -41,7 +43,10 @@ end
 
 }
 %%% preparation of the groups
-\include{Atividades/Lista.tex}
+\include{Atividades/POO001}
+\include{Atividades/ILP001}
+\include{Atividades/POO002}
+% \include{Atividades/lista}
 \renewcommand{\lstlistingname}{}
 
 \begin{document}
