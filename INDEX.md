@@ -12,16 +12,3 @@ jenkins .. amc
 
 @enduml
 {% endplantuml %}
-
-
-| A                    | B       | C      |
-|----------------------|---------|--------|
-| Valor 1              | Valor2  | Valor3 |
-| Valor 2              | valor 3 | valor4 |
-| Novo valor na tabela | teste   | teste  |
-
-**Teste de texto**
-
-*Esse fica italico*
-
-
