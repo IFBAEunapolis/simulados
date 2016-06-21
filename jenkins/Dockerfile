@@ -8,7 +8,8 @@ COPY executors.groovy /usr/share/jenkins/ref/init.groovy.d/executors.groovy
 USER root
 
 # Instalando dependências do latex e auto-multiple-choice
-RUN apt-get update && apt-get install -y --no-install-recommends vim git python3 texlive-luatex auto-multiple-choice
+RUN apt-get update && apt-get install -y --no-install-recommends texlive-luatex auto-multiple-choice
+RUN apt-get autoremove -y
 RUN apt-get clean
 
 # Instalando Plugins do Jenkins
@@ -28,4 +29,3 @@ USER jenkins
 RUN mkdir /var/jenkins_home/jobs/
 COPY jobs /var/jenkins_home/
 COPY config.xml /var/jenkins_home/
-
