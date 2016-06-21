@@ -24,6 +24,8 @@ ADD enade-builder /home/jenkins/enade-builder/
 
 # Retornar ao usuário do jenkins
 USER jenkins
+
 RUN mkdir /var/jenkins_home/jobs/
 COPY jobs /var/jenkins_home/
+COPY config.xml /var/jenkins_home/
 
