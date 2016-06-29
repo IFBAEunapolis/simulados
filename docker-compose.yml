@@ -9,8 +9,6 @@ services:
     build: jenkins/
     mem_limit: 512m
     cpu_shares: 20
-    volumes:
-      - ./jenkins/enade-builder/:/home/jenkins/enade-builder/
     ports:
       - "8080:8080" # Porta do Jenkins
       - "50000:50000"
