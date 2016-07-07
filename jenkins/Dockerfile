@@ -20,9 +20,6 @@ RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
 RUN mkdir /home/jenkins
 RUN chown jenkins:jenkins /home/jenkins
 
-# Adicionar pasta do enade-builder à imagem
-ADD enade-builder /home/jenkins/enade-builder/
-
 # Retornar ao usuário do jenkins
 USER jenkins
 

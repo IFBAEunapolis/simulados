@@ -4,26 +4,20 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <scm class="org.jenkinsci.plugins.multiplescms.MultiSCM" plugin="multiple-scms@0.6">
-    <scms>
-      <hudson.plugins.cloneworkspace.CloneWorkspaceSCM plugin="clone-workspace-scm@0.6">
-        <parentJobName>Baixar Atividades</parentJobName>
-        <criteria>Any</criteria>
-      </hudson.plugins.cloneworkspace.CloneWorkspaceSCM>
-    </scms>
-  </scm>
+  <scm class="hudson.scm.NullSCM"/>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
+  <customWorkspace>${JENKINS_HOME}/workspace/Prova ADS 2016</customWorkspace>
   <builders>
     <hudson.plugins.parameterizedtrigger.TriggerBuilder plugin="parameterized-trigger@2.17">
       <configs>
         <hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
           <configs class="empty-list"/>
-          <projects>Baixar Atividades</projects>
+          <projects>Baixar Gerador,Baixar Atividades</projects>
           <condition>ALWAYS</condition>
           <triggerWithNoParameters>false</triggerWithNoParameters>
           <block>
@@ -51,7 +45,8 @@
       </configs>
     </hudson.plugins.parameterizedtrigger.TriggerBuilder>
     <hudson.tasks.Shell>
-      <command>/home/jenkins/enade-builder/amc_compile.sh /home/jenkins/enade-builder/
+      <command>cp -R Atividades &quot;${WORKSPACE}/simulados-gerador/&quot;
+&quot;${WORKSPACE}/simulados-gerador/amc_compile.sh&quot; &quot;${WORKSPACE}/simulados-gerador/&quot;
 </command>
     </hudson.tasks.Shell>
   </builders>
