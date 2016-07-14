@@ -8,21 +8,30 @@ COPY executors.groovy /usr/share/jenkins/ref/init.groovy.d/executors.groovy
 USER root
 
 # Instalando dependências do latex e auto-multiple-choice
-RUN apt-get update && apt-get install -y --no-install-recommends texlive-luatex auto-multiple-choice
+RUN apt-get clean
+RUN apt-get update && apt-get install -y netselect-apt
+RUN netselect-apt -o /tmp/sources.list
+RUN mv -f /tmp/sources.list /etc/apt/sources.list
+RUN apt-get update && apt-get install -y --no-install-recommends texlive-luatex auto-multiple-choice texlive-latex-extra texlive-lang-portuguese
+RUN apt-get install -y texlive-fonts-recommended
 RUN apt-get autoremove -y
 RUN apt-get clean
 
 # Instalando Plugins do Jenkins
-COPY plugins.txt /usr/share/jenkins/plugins.txt
-RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
+RUN /usr/local/bin/install-plugins.sh \
+      envinject \
+      git \
+      build-pipeline-plugin \
+      email-ext
 
 # Criar pasta de usuário do jenkins
 RUN mkdir /home/jenkins
 RUN chown jenkins:jenkins /home/jenkins
 
 # Retornar ao usuário do jenkins
-USER jenkins
+RUN rm -Rf /var/jenkins_home/jobs
+RUN chown -R jenkins /var/jenkins_home /usr/share/jenkins/ref
+COPY config.xml /usr/share/jenkins/ref/config.xml
+COPY jobs/ /usr/share/jenkins/ref/jobs
 
-RUN mkdir /var/jenkins_home/jobs/
-COPY jobs /var/jenkins_home/
-COPY config.xml /var/jenkins_home/
+USER jenkins

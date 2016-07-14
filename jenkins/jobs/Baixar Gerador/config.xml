@@ -4,7 +4,7 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.4">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.5.2">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -22,12 +22,6 @@
       <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
         <relativeTargetDir>simulados-gerador</relativeTargetDir>
       </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
-      <hudson.plugins.git.extensions.impl.CloneOption>
-        <shallow>true</shallow>
-        <noTags>false</noTags>
-        <reference></reference>
-        <depth>0</depth>
-      </hudson.plugins.git.extensions.impl.CloneOption>
     </extensions>
   </scm>
   <canRoam>true</canRoam>
