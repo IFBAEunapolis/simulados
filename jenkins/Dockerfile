@@ -14,6 +14,7 @@ RUN netselect-apt -o /tmp/sources.list
 RUN mv -f /tmp/sources.list /etc/apt/sources.list
 RUN apt-get update && apt-get install -y --no-install-recommends texlive-luatex auto-multiple-choice texlive-latex-extra texlive-lang-portuguese
 RUN apt-get install -y texlive-fonts-recommended
+RUN apt-get install -y lua-filesystem
 RUN apt-get autoremove -y
 RUN apt-get clean
 
