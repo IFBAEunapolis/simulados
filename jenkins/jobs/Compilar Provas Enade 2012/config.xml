@@ -17,7 +17,7 @@
       <configs>
         <hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
           <configs class="empty-list"/>
-          <projects>Baixar Gerador,Baixar Atividades,Baixar Lista de Alunos 2012</projects>
+          <projects>Baixar Gerador,Baixar Atividades 2012,Baixar Lista de Alunos 2012</projects>
           <condition>ALWAYS</condition>
           <triggerWithNoParameters>false</triggerWithNoParameters>
           <block>
@@ -47,8 +47,8 @@
     <hudson.tasks.Shell>
       <command>cd &quot;${WORKSPACE}/simulados-gerador&quot;
 
-# Copiar a lista de atividades
-cp -rf &quot;${WORKSPACE}/Atividades&quot; &quot;./&quot;
+# Copiar a lista de questões e configurações da prova
+cp -rf &quot;${WORKSPACE}/Prova&quot; &quot;./&quot;
 
 # Copiar a lista de alunos
 ARQUIVOS_FOLDER=&quot;arquivos/&quot;
@@ -63,7 +63,9 @@ fi
 
 &quot;./amc_compile.sh&quot; &quot;./&quot;
 
-rm &quot;${JOB_NAME##*/}-Provas.zip&quot;
+if [ -e &quot;${JOB_NAME##*/}-Provas.zip&quot; ]; then
+  rm &quot;${JOB_NAME##*/}-Provas.zip&quot;
+fi
 
 zip -r &quot;${JOB_NAME##*/}-Provas.zip&quot; &quot;Provas&quot;
 </command>

@@ -4,11 +4,11 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.4">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.5.2">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>http://localhost:3000/ifba_ads/Atividades.git</url>
+        <url>http://localhost:3000/ifba_ads/prova_turma_2012.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -20,7 +20,7 @@
     <submoduleCfg class="list"/>
     <extensions>
       <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
-        <relativeTargetDir>Atividades</relativeTargetDir>
+        <relativeTargetDir>Prova</relativeTargetDir>
       </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
     </extensions>
   </scm>
