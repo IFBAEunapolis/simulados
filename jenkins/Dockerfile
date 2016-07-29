@@ -1,5 +1,5 @@
 # FROM jenkins:alpine
-FROM jenkins
+FROM rafaelndev/jenkins-docker
 
 # Modificando o número de executores
 COPY executors.groovy /usr/share/jenkins/ref/init.groovy.d/executors.groovy
@@ -8,22 +8,30 @@ COPY executors.groovy /usr/share/jenkins/ref/init.groovy.d/executors.groovy
 USER root
 
 # Instalando dependências do latex e auto-multiple-choice
+RUN sed -i 's;http://httpredir.debian.org;http://ftp.br.debian.org;' /etc/apt/sources.list
 RUN apt-get clean
-RUN apt-get update && apt-get install -y netselect-apt
-RUN netselect-apt -o /tmp/sources.list
-RUN mv -f /tmp/sources.list /etc/apt/sources.list
-RUN apt-get update && apt-get install -y --no-install-recommends texlive-luatex auto-multiple-choice texlive-latex-extra texlive-lang-portuguese
-RUN apt-get install -y texlive-fonts-recommended
-RUN apt-get install -y lua-filesystem
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      texlive-luatex            \
+      auto-multiple-choice      \
+      texlive-latex-extra       \
+      texlive-lang-portuguese   \
+      texlive-fonts-recommended \
+      lua-filesystem
+
 RUN apt-get autoremove -y
 RUN apt-get clean
 
+RUN echo 2.0 > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
+
 # Instalando Plugins do Jenkins
 RUN /usr/local/bin/install-plugins.sh \
-      envinject \
-      git \
-      build-pipeline-plugin \
-      email-ext
+      script-security:1.13          \
+      envinject:1.92.1              \
+      build-pipeline-plugin:1.5.3.1 \
+      email-ext:2.44                \
+      git:2.5.2                     \
+      copyartifact:1.38.1
 
 # Criar pasta de usuário do jenkins
 RUN mkdir /home/jenkins
