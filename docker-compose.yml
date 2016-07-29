@@ -4,11 +4,9 @@ version: '2'
 
 services:
   enade:
-    dns: ["8.8.8.8"]
     # image: ifbaeunapolis/simulados:latest
     build: jenkins/
-    mem_limit: 512m
-    cpu_shares: 20
+    mem_limit: 1024m
     ports:
       - "8080:8080" # Porta do Jenkins
       - "50000:50000"
