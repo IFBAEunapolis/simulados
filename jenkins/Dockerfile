@@ -1,5 +1,4 @@
-# FROM jenkins:alpine
-FROM rafaelndev/jenkins-docker
+FROM jenkins:2.7.2
 
 # Modificando o número de executores
 COPY executors.groovy /usr/share/jenkins/ref/init.groovy.d/executors.groovy
