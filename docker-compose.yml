@@ -4,8 +4,8 @@ version: '2'
 
 services:
   enade:
-    # image: ifbaeunapolis/simulados:latest
-    build: jenkins/
+    image: ifbaeunapolis/simulados:latest
+    # build: jenkins/
     mem_limit: 1024m
     ports:
       - "8080:8080" # Porta do Jenkins
