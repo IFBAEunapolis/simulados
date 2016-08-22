@@ -61,9 +61,11 @@ Neste momento, ainda não foi criado nenhum repositório. Precisamos criar os se
 
 **TODO: Modificar nomes dos repositórios.**
 
-* Atividades - Esse repositório é onde ficaram guardadas as questões para cada disciplina, e as informações da prova.
+* prova_turma_{ano} - Esse repositório é onde ficaram guardadas as questões para cada disciplina, e as informações da prova.
 
-* Lista_Alunos - Neste repositório ficará o arquivo com as informações dos alunos, especificamente o arquivo *.xlsx* recebido.
+* lista_alunos_{ano} - Neste repositório ficará o arquivo com as informações dos alunos, especificamente o arquivo *.xlsx* recebido.
+
+**OBS**: {ano} substituído pelo ano da turma.
 
 Para criar um repositório siga os seguintes passos:
 
@@ -77,3 +79,14 @@ Para criar um repositório siga os seguintes passos:
 
 Digite o nome do repositório e clique em "Criar Repositório".
 
+O primeiro repositório *lista\_alunos\_{ano}*, precisa ter um arquivo com o nome de *alunos.csv* contento as informações dos alunos.
+
+O segundo, chamado de *prova\_turma\_{ano}* contém as informações da prova, ele precisa está nesse formato:
+
+  ![Repositório da Prova](/docs/imagens/estrutura_repo_prova.png)
+
+Dentro da pasta **Questoes** ficam os arquivos com as questões do *AMC*, para cada disciplina do curso existe um arquivo .tex seguindo os padrões de questões do *AMC* que podem ser encontradas em sua [Documentação](http://home.gna.org/auto-qcm/auto-multiple-choice.en/latex.shtml).
+
+Os arquivos de questões ficam nesse formato:
+
+  ![Lista Questões](/docs/imagens/lista_questoes.png)
