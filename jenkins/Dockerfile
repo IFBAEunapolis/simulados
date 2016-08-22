@@ -1,4 +1,4 @@
-FROM jenkins:2.7.2
+FROM jenkins:latest
 
 # Modificando o número de executores
 COPY executors.groovy /usr/share/jenkins/ref/init.groovy.d/executors.groovy
@@ -37,7 +37,6 @@ RUN mkdir /home/jenkins
 RUN chown jenkins:jenkins /home/jenkins
 
 # Retornar ao usuário do jenkins
-RUN rm -Rf /var/jenkins_home/jobs
 RUN chown -R jenkins /var/jenkins_home /usr/share/jenkins/ref
 COPY config.xml /usr/share/jenkins/ref/config.xml
 COPY jobs/ /usr/share/jenkins/ref/jobs

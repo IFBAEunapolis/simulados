@@ -8,7 +8,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>http://localhost:3000/ifba_ads/lista_alunos_turma_2016.git</url>
+        <url>http://localhost:3000/ifba_ads/lista_alunos_turma_2012.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
