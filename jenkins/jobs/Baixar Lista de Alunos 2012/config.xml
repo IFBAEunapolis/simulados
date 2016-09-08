@@ -30,7 +30,11 @@
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
-  <builders/>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>xlsx2csv &quot;${WORKSPACE}/lista_alunos/alunos.xlsv&quot; &quot;${WORKSPACE}/lista_alunos/alunos.csv&quot;</command>
+    </hudson.tasks.Shell>
+  </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
       <artifacts>**/*</artifacts>

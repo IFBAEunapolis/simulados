@@ -16,7 +16,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       texlive-latex-extra       \
       texlive-lang-portuguese   \
       texlive-fonts-recommended \
-      lua-filesystem
+      lua-filesystem            \
+      xlsx2csv
 
 RUN apt-get autoremove -y
 RUN apt-get clean
